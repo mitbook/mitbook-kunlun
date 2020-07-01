@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.mitbook</groupId>
     <artifactId>mitbook-server</artifactId>
-    <version>1.0</version>
+    <version>0.1</version>
     <name>mitbook-server</name>
     <description>mitbook-server</description>
     <packaging>jar</packaging>
@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.mitbook</groupId>
             <artifactId>mitbook-kunlun</artifactId>
-            <version>1.0</version>
+            <version>0.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
