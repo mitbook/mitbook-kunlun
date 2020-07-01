@@ -13,7 +13,10 @@
     <version>1.0</version>
     <name>mitbook-kunlun</name>
     <description>mitbook-kunlun</description>
-
+    <packaging>pom</packaging>
+    <modules>
+        <module>mitbook-server</module>
+    </modules>
     <properties>
         <java.version>1.8</java.version>
     </properties>
