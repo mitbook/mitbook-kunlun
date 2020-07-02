@@ -29,7 +29,7 @@ public class Constant {
     public static final String SLASH = "/";
 
     /**
-     * 图片名称
+     * imageName
      */
     public static final String FAVICON = "/favicon.ico";
 }
