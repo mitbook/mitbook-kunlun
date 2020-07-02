@@ -20,6 +20,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>com.mitbook</groupId>
             <artifactId>mitbook-kunlun</artifactId>
             <version>0.1</version>
