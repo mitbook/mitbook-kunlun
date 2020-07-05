@@ -61,6 +61,8 @@ public class NettyServer{
 
     private String nettyServerHandler = "nettyServerHandler";
 
+    private Integer maxContentLength = 65536;
+
     public void start() {
         final NioEventLoopGroup bossGroup = new NioEventLoopGroup();
         final NioEventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -77,13 +79,12 @@ public class NettyServer{
                         protected void initChannel(SocketChannel ch) {
                             final ChannelPipeline pipeline = ch.pipeline();
                             pipeline.addLast(httpServerCodec, new HttpServerCodec());
-                            pipeline.addLast(httpObjectAggregator, new HttpObjectAggregator(65536));
+                            pipeline.addLast(httpObjectAggregator, new HttpObjectAggregator(maxContentLength));
                             pipeline.addLast(httpContentCompressor, new HttpContentCompressor());
                             pipeline.addLast(chunkedWriteHandler, new ChunkedWriteHandler());
                             pipeline.addLast(nettyServerHandler, new NettyServerHandler(httpRouter));
                         }
                     });
-
             final Channel serverChannel = bootstrap.bind(new InetSocketAddress(port)).sync().channel();
             log.info("Netty started on port(s):"+port);
             serverChannel.closeFuture().sync();
