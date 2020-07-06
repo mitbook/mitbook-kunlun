@@ -31,7 +31,7 @@ import java.util.Map;
  */
 public class RequestUtil {
 
-    private RequestUtil() {
+    public RequestUtil() {
     }
 
     public static Map<String, List<String>> getParameterMap(final FullHttpRequest request) {

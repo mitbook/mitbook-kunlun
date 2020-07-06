@@ -38,12 +38,12 @@ public class GeneralResponse<T> {
 
     private T data;
 
-    private GeneralResponse(final HttpResponseStatus responseStatus, final T data) {
+    public GeneralResponse(final HttpResponseStatus responseStatus, final T data) {
         this.status = responseStatus.code();
         this.data = data;
     }
 
-    private GeneralResponse(final HttpResponseStatus responseStatus, final String message, final T data) {
+    public GeneralResponse(final HttpResponseStatus responseStatus, final String message, final T data) {
         this.status = responseStatus.code();
         this.message = message;
         this.data = data;

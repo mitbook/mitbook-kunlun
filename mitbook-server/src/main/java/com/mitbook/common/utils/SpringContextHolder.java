@@ -63,7 +63,7 @@ public class SpringContextHolder implements ApplicationContextAware, Initializin
         SpringContextHolder.applicationContext = null;
     }
 
-    private List<Class<?>> loadControllerClass(ApplicationContext ctx) {
+    public List<Class<?>> loadControllerClass(ApplicationContext ctx) {
         final Class<? extends Annotation> clazz = RestController.class;
         return ctx.getBeansWithAnnotation(clazz)
                 .values().stream()

@@ -50,7 +50,7 @@ public class HttpRouterDispatch<T> {
     @NonNull
     private Method method;
 
-    private static void verifyParameterAnnotations(Map<String, List<String>> parameterMap, Method method) {
+    public static void verifyParameterAnnotations(Map<String, List<String>> parameterMap, Method method) {
         Annotation[][] parameterAnnotations = method.getParameterAnnotations();
         if (parameterAnnotations == null || parameterAnnotations.length == 0) {
             return;
@@ -76,7 +76,7 @@ public class HttpRouterDispatch<T> {
         }
     }
 
-    private static void handleParameterTypes(Class<?> parameterType, List<String> values, List<Object> args) {
+    public static void handleParameterTypes(Class<?> parameterType, List<String> values, List<Object> args) {
         if (CollectionUtils.isEmpty(values)) {
             args.add(null);
             return;
@@ -158,7 +158,7 @@ public class HttpRouterDispatch<T> {
         }
     }
 
-    private Object[] handleRequest(FullHttpRequest request) {
+    public Object[] handleRequest(FullHttpRequest request) {
         HttpMethod method = request.method();
         if (method == HttpMethod.GET) {
             return handleGetRequest(request);
@@ -172,7 +172,7 @@ public class HttpRouterDispatch<T> {
         throw new RuntimeException(String.format("Unsupported '%s' request methods.", method));
     }
 
-    private Object[] handleGetRequest(FullHttpRequest request) {
+    public Object[] handleGetRequest(FullHttpRequest request) {
         Parameter[] parameters = method.getParameters();
         Class<?>[] parameterTypes = method.getParameterTypes();
         List<Object> args = new ArrayList<>(parameters.length);
@@ -185,17 +185,17 @@ public class HttpRouterDispatch<T> {
         return args.toArray();
     }
 
-    private Object[] handlePostRequest(FullHttpRequest request) {
+    public Object[] handlePostRequest(FullHttpRequest request) {
         Class<?>[] parameterTypes = method.getParameterTypes();
         List<Object> args = Collections.singletonList(RequestUtil.postEntity(request, parameterTypes[0]));
         return args.toArray();
     }
 
-    private Object[] handlePutRequest(FullHttpRequest request) {
+    public Object[] handlePutRequest(FullHttpRequest request) {
         return handlePostRequest(request);
     }
 
-    private Object[] handleDeleteRequest(FullHttpRequest request) {
+    public Object[] handleDeleteRequest(FullHttpRequest request) {
         return handleGetRequest(request);
     }
 }

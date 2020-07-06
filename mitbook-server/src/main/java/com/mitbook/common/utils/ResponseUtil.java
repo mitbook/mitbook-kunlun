@@ -26,7 +26,7 @@ import io.netty.handler.codec.http.*;
  */
 public class ResponseUtil {
 
-    private ResponseUtil() {
+    public ResponseUtil() {
 
     }
 
