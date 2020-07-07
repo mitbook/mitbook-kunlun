@@ -27,7 +27,7 @@ public class JsonUtil {
 
     private static final Gson GSON = GSON_BUILDER.disableHtmlEscaping().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
-    private JsonUtil() {
+    public JsonUtil() {
 
     }
 
