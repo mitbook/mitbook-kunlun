@@ -4,7 +4,7 @@ Implement high performance netty server based on netty to replace traditional To
 # logo
 <center>  <!--开始居中对齐-->
 
-![kunlun](http://zh.mweb.im/asset/img/set-up-git.gif "kunlun")
+![kunlun](http://120.77.168.166/kunlun.jpeg "kunlun")
 </center> <!--结束居中对齐-->
 
 # 框架介绍
