@@ -2,17 +2,17 @@
 Implement high performance netty server based on netty to replace traditional Tomcat
 
 # logo
-<center>  <!--开始居中对齐-->
+<center>  <!--Start center alignment-->
 
 ![kunlun](http://120.77.168.166/kunlun.jpeg "kunlun")
-</center> <!--结束居中对齐-->
+</center> <!--End center alignment-->
 
-# 框架介绍
+# Introduction to the framework
 
-> 1.该框架是替换springboot内置的tomcat容器,通过netty框架进行编写,可与springboot进行无缝对接,未来可支持集群,其次就是编程模式与传统的编程模式无区别,不会像响应式编程那么难以理解,该框架具有学习成本低,编码规范等优点.
+> 1.This framework is to replace the built-in Tomcat container of springboot. It can be written by netty framework, which can connect with springboot seamlessly. In the future, it can support cluster. Secondly, the programming mode is no different from the traditional programming mode, and it is not as difficult to understand as responsive programming. The framework has the advantages of low learning cost and standard coding.
 
-# 框架使用说明:
-> 1.引入工程依赖:
+# Framework instructions:
+> 1.Introducing engineering dependencies:
 >>  
 ```
  <dependency>
@@ -22,5 +22,5 @@ Implement high performance netty server based on netty to replace traditional To
 ```
 
 
-# 官方链接
-欢迎阅读 [about me](https://www.yuque.com/mryuji/kb/ih222h "about me")
+# Official link
+Welcome to read [about me](https://www.yuque.com/mryuji/kb/ih222h "about me")
