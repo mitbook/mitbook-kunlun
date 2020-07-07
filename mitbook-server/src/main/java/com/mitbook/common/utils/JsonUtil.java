@@ -27,10 +27,6 @@ public class JsonUtil {
 
     private static final Gson GSON = GSON_BUILDER.disableHtmlEscaping().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
-    public JsonUtil() {
-
-    }
-
     public static String toJson(Object o) {
         return GSON.toJson(o);
     }

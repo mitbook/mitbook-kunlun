@@ -26,10 +26,6 @@ import io.netty.handler.codec.http.*;
  */
 public class ResponseUtil {
 
-    public ResponseUtil() {
-
-    }
-
     public static void notFound(ChannelHandlerContext ctx, FullHttpRequest request) {
         response(ctx, request, GeneralResponse.NOT_FOUND);
     }

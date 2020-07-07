@@ -31,10 +31,6 @@ import java.util.Map;
  */
 public class RequestUtil {
 
-    public RequestUtil() {
-
-    }
-
     public static Map<String, List<String>> getParameterMap(final FullHttpRequest request) {
         final String uri = request.uri();
         if (StringUtils.isNotBlank(uri)) {
