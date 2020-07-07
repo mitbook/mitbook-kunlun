@@ -23,4 +23,4 @@ Implement high performance netty server based on netty to replace traditional To
 
 
 # Official link
-Welcome to read [about me](https://www.yuque.com/mryuji/kb/ih222h "about me")
+Welcome to read [Official document](https://www.yuque.com/mryuji/kb/ih222h "Official document")
