@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mitbook-common</artifactId>
-
+    <groupId>com.mitbook</groupId>
+    <version>0.1</version>
 
 </project>
