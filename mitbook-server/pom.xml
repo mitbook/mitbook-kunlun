@@ -10,20 +10,16 @@
     </parent>
     <groupId>com.mitbook</groupId>
     <artifactId>mitbook-server</artifactId>
-    <version>0.1</version>
+    <version>1.0</version>
     <name>mitbook-server</name>
     <description>mitbook-server</description>
     <packaging>jar</packaging>
     <properties>
         <java.version>1.8</java.version>
+        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.mitbook</groupId>
-            <artifactId>mitbook-kunlun</artifactId>
-            <version>0.1</version>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -31,14 +27,14 @@
         </dependency>
         <dependency>
             <groupId>com.mitbook</groupId>
-            <artifactId>mitbook-kunlun</artifactId>
-            <version>0.1</version>
+            <artifactId>mitbook-common</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>com.mitbook</groupId>
+            <artifactId>mitbook-kunlun</artifactId>
+            <version>1.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -50,19 +46,20 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>com.mitbook</groupId>
-            <artifactId>mitbook-common</artifactId>
-            <version>0.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.mitbook</groupId>
-            <artifactId>mitbook-common</artifactId>
-            <version>0.1</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--整合spring cloud alibaba-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
