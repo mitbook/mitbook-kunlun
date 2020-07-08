@@ -15,22 +15,20 @@
  */
 package com.mitbook.annotation;
 
-import com.mitbook.Constant;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.lang.annotation.*;
 
 /**
  * @author pengzhengfa
  */
-@Target(value = ElementType.PARAMETER)
+@Target(value = {ElementType.TYPE, ElementType.METHOD})
 @Retention(value = RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
-public @interface RequestParam {
+public @interface MitRequestMapping {
 
-    String name();
+    String uri() default "";
 
-    boolean required() default true;
-
-    String defaultValue() default Constant.EMPTY;
+    RequestMethod method() default RequestMethod.GET;
 }

@@ -27,6 +27,6 @@ import java.lang.annotation.*;
 @Inherited
 @Documented
 @Component
-public @interface RestController {
+public @interface MitRestController {
 
 }

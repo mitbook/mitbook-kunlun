@@ -15,7 +15,7 @@
  */
 package com.mitbook.router;
 
-import com.mitbook.annotation.RequestParam;
+import com.mitbook.annotation.MitRequestParam;
 import com.mitbook.response.GeneralResponse;
 import com.mitbook.utils.RequestUtil;
 import io.netty.handler.codec.http.FullHttpRequest;
@@ -57,13 +57,13 @@ public class HttpRouterDispatch<T> {
         }
         for (Annotation[] parameterAnnotation : parameterAnnotations) {
             for (Annotation annotation : parameterAnnotation) {
-                if (annotation instanceof RequestParam) {
-                    RequestParam requestParam = (RequestParam) annotation;
-                    if (requestParam.required()) {
-                        String name = requestParam.name();
+                if (annotation instanceof MitRequestParam) {
+                    MitRequestParam mitRequestParam = (MitRequestParam) annotation;
+                    if (mitRequestParam.required()) {
+                        String name = mitRequestParam.name();
                         List<String> values = parameterMap.get(name);
                         if (CollectionUtils.isEmpty(values)) {
-                            String defaultValue = requestParam.defaultValue();
+                            String defaultValue = mitRequestParam.defaultValue();
                             if (StringUtils.isBlank(defaultValue)) {
                                 throw new RuntimeException(String.format("Required parameter '%s' is not present.", name));
                             } else {

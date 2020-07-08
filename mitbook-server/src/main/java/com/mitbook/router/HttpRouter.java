@@ -17,7 +17,7 @@ package com.mitbook.router;
 
 import com.google.common.collect.Maps;
 import com.mitbook.Constant;
-import com.mitbook.annotation.RequestMapping;
+import com.mitbook.annotation.MitRequestMapping;
 import com.mitbook.response.GeneralResponse;
 import io.netty.handler.codec.http.HttpMethod;
 import lombok.extern.log4j.Log4j2;
@@ -61,10 +61,10 @@ public class HttpRouter extends ClassLoader {
 
     public void addRouter(final Class<?> clazz) {
         try {
-            final RequestMapping classRequestMapping = clazz.getAnnotation(RequestMapping.class);
+            final MitRequestMapping classMitRequestMapping = clazz.getAnnotation(MitRequestMapping.class);
             String clazzUri = Constant.EMPTY;
-            if (classRequestMapping != null) {
-                final String uri = classRequestMapping.uri();
+            if (classMitRequestMapping != null) {
+                final String uri = classMitRequestMapping.uri();
                 clazzUri = uri.startsWith(Constant.SLASH) ? uri : Constant.SLASH + uri;
             }
             final Method[] methods = clazz.getDeclaredMethods();
@@ -72,10 +72,10 @@ public class HttpRouter extends ClassLoader {
                 final Annotation[] annotations = invokeMethod.getAnnotations();
                 for (Annotation annotation : annotations) {
                     final Class<? extends Annotation> annotationType = annotation.annotationType();
-                    if (annotationType == RequestMapping.class) {
-                        final RequestMapping methodRequestMapping = (RequestMapping) annotation;
-                        final String methodUri = methodRequestMapping.uri();
-                        final String httpMethod = methodRequestMapping.method().toString();
+                    if (annotationType == MitRequestMapping.class) {
+                        final MitRequestMapping methodMitRequestMapping = (MitRequestMapping) annotation;
+                        final String methodUri = methodMitRequestMapping.uri();
+                        final String httpMethod = methodMitRequestMapping.method().toString();
                         if (!controllerBeans.containsKey(clazz.getName())) {
                             controllerBeans.put(clazz.getName(), clazz.newInstance());
                         }
