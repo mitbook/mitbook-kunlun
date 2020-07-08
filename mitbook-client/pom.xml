@@ -50,7 +50,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--整合spring cloud alibaba-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
