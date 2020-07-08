@@ -10,16 +10,14 @@
     </parent>
     <groupId>com.mitbook</groupId>
     <artifactId>mitbook-kunlun</artifactId>
-    <version>0.1</version>
+    <version>1.0</version>
     <name>mitbook-kunlun</name>
     <description>mitbook-kunlun</description>
     <packaging>pom</packaging>
-    <modules>
-        <module>mitbook-server</module>
-        <module>mitbook-common</module>
-    </modules>
+
     <properties>
         <java.version>1.8</java.version>
+        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
     </properties>
 
     <dependencies>
@@ -64,10 +62,9 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -80,6 +77,19 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--整合spring cloud alibaba-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
