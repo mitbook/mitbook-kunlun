@@ -5,7 +5,7 @@ import com.mitbook.annotation.RestController;
 import com.mitbook.entity.UserEntity;
 import com.mitbook.response.GeneralResponse;
 import com.mitbook.service.UserService;
-import com.mitbook.utils.SpringContextHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
@@ -16,7 +16,8 @@ import java.util.List;
 public class RestUser {
 
 
-    private static final UserService userService = SpringContextHolder.getBean(UserService.class);
+    @Autowired
+    private UserService userService;
 
     /**
      * 无条件查询（查询所有的用户）
