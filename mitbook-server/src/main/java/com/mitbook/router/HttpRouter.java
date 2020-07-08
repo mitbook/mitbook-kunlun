@@ -16,9 +16,9 @@
 package com.mitbook.router;
 
 import com.google.common.collect.Maps;
+import com.mitbook.Constant;
 import com.mitbook.annotation.RequestMapping;
-import com.mitbook.common.Constant;
-import com.mitbook.common.response.GeneralResponse;
+import com.mitbook.response.GeneralResponse;
 import io.netty.handler.codec.http.HttpMethod;
 import lombok.extern.log4j.Log4j2;
 

@@ -16,8 +16,8 @@
 package com.mitbook.router;
 
 import com.mitbook.annotation.RequestParam;
-import com.mitbook.common.response.GeneralResponse;
-import com.mitbook.common.utils.RequestUtil;
+import com.mitbook.response.GeneralResponse;
+import com.mitbook.utils.RequestUtil;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.HttpMethod;
 import lombok.Data;

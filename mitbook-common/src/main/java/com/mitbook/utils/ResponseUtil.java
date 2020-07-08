@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mitbook.common.utils;
+package com.mitbook.utils;
 
-import com.mitbook.common.response.GeneralResponse;
+import com.mitbook.response.GeneralResponse;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;

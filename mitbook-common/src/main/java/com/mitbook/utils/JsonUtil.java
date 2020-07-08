@@ -13,23 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mitbook.common;
+package com.mitbook.utils;
 
-import org.apache.commons.lang3.StringUtils;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * @author pengzhengfa
  */
-public class Constant {
+public class JsonUtil {
 
-    public static final String EMPTY = StringUtils.EMPTY;
+    private static final GsonBuilder GSON_BUILDER = new GsonBuilder();
 
-    public static final String QUESTION = "?";
+    private static final Gson GSON = GSON_BUILDER.disableHtmlEscaping().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
-    public static final String SLASH = "/";
+    public static String toJson(Object o) {
+        return GSON.toJson(o);
+    }
 
-    /**
-     * imageName
-     */
-    public static final String FAVICON = "/favicon.ico";
+    public static <T> T fromJson(String json, Class<T> clazz) {
+        return GSON.fromJson(json, clazz);
+    }
 }

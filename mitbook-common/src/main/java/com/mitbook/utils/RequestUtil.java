@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mitbook.common.utils;
+package com.mitbook.utils;
 
 import com.google.common.collect.Maps;
-import com.mitbook.common.Constant;
+import com.mitbook.Constant;
 import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.QueryStringDecoder;

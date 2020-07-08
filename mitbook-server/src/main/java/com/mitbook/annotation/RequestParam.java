@@ -15,7 +15,7 @@
  */
 package com.mitbook.annotation;
 
-import com.mitbook.common.Constant;
+import com.mitbook.Constant;
 
 import java.lang.annotation.*;
 
