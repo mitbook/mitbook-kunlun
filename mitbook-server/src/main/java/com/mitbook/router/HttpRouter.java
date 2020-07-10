@@ -16,9 +16,9 @@
 package com.mitbook.router;
 
 import com.google.common.collect.Maps;
-import com.mitbook.Constant;
 import com.mitbook.annotation.RequestMapping;
-import com.mitbook.response.GeneralResponse;
+import com.mitbook.common.Constant;
+import com.mitbook.common.response.GeneralResponse;
 import io.netty.handler.codec.http.HttpMethod;
 import lombok.extern.log4j.Log4j2;
 
@@ -80,14 +80,15 @@ public class HttpRouter extends ClassLoader {
                             controllerBeans.put(clazz.getName(), clazz.newInstance());
                         }
                         final HttpRouterDispatch<GeneralResponse> httpRouterDispatch = new HttpRouterDispatch<>(controllerBeans.get(clazz.getName()), invokeMethod);
-                        final String requestUri = clazzUri + (methodUri.startsWith(Constant.SLASH) ? methodUri : Constant.SLASH + methodUri);
+                        final String requestUri = clazzUri + (methodUri.startsWith(
+                                Constant.SLASH) ? methodUri : Constant.SLASH + methodUri);
                         httpRouterMapper.put(new HttpRouterTally(requestUri, HttpMethod.valueOf(httpMethod)), httpRouterDispatch);
                     }
                 }
             }
 
             if (log.isDebugEnabled()) {
-                httpRouterMapper.forEach((key, value) -> log.info("Load control layer ==> [{}], Request path ==> [{}], Request method ==> [{}]", value.getObject(), key.getUri(), key.getMethod()));
+                httpRouterMapper.forEach((key, value) -> log.info("加载控制层 ==> [{}], 请求路径 ==> [{}], 请求方法 ==> [{}]", value.getObject(), key.getUri(), key.getMethod()));
             }
         } catch (Exception e) {
             log.error("{}", e);

@@ -13,24 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mitbook.annotation;
+package com.mitbook.configuration;
 
-import com.mitbook.common.Constant;
-
-import java.lang.annotation.*;
+import com.mitbook.bootstrap.NettyServer;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.context.annotation.Bean;
 
 /**
  * @author pengzhengfa
  */
-@Target(value = ElementType.PARAMETER)
-@Retention(value = RetentionPolicy.RUNTIME)
-@Inherited
-@Documented
-public @interface RequestParam {
+@SpringBootConfiguration
+public class NettyServerConfiguration {
 
-    String name();
-
-    boolean required() default true;
-
-    String defaultValue() default Constant.EMPTY;
+    @Bean(initMethod = "start")
+    public NettyServer nettyServer() {
+        return new NettyServer();
+    }
 }

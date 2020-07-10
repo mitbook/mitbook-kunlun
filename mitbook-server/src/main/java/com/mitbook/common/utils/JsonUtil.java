@@ -13,24 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mitbook.annotation;
+package com.mitbook.common.utils;
 
-import com.mitbook.common.Constant;
-
-import java.lang.annotation.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * @author pengzhengfa
  */
-@Target(value = ElementType.PARAMETER)
-@Retention(value = RetentionPolicy.RUNTIME)
-@Inherited
-@Documented
-public @interface RequestParam {
+public class JsonUtil {
 
-    String name();
+    private static final GsonBuilder GSON_BUILDER = new GsonBuilder();
 
-    boolean required() default true;
+    private static final Gson GSON = GSON_BUILDER.disableHtmlEscaping().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
-    String defaultValue() default Constant.EMPTY;
+    private JsonUtil() {
+
+    }
+
+    public static String toJson(Object o) {
+        return GSON.toJson(o);
+    }
+
+    public static <T> T fromJson(String json, Class<T> clazz) {
+        return GSON.fromJson(json, clazz);
+    }
 }

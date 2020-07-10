@@ -15,12 +15,12 @@
  */
 package com.mitbook.bootstrap;
 
-import com.mitbook.Constant;
-import com.mitbook.response.GeneralResponse;
+import com.mitbook.common.Constant;
+import com.mitbook.common.response.GeneralResponse;
+import com.mitbook.common.utils.ResponseUtil;
 import com.mitbook.router.HttpRouter;
 import com.mitbook.router.HttpRouterDispatch;
 import com.mitbook.router.HttpRouterTally;
-import com.mitbook.utils.ResponseUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.FullHttpRequest;

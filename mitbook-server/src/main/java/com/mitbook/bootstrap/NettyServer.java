@@ -15,8 +15,8 @@
  */
 package com.mitbook.bootstrap;
 
+import com.mitbook.common.utils.SpringContextHolder;
 import com.mitbook.router.HttpRouter;
-import com.mitbook.utils.SpringContextHolder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -41,27 +41,14 @@ import java.net.InetSocketAddress;
  * @author pengzhengfa
  */
 @Log4j2
-public class NettyServer {
+public class NettyServer{
 
     @Value("${spring.netty.port}")
     private Integer port;
-
     private static HttpRouter httpRouter = new HttpRouter();
 
     @Autowired
     private SpringContextHolder springContextHolder;
-
-    private String httpServerCodec = "httpServerCodec";
-
-    private String httpObjectAggregator = "httpObjectAggregator";
-
-    private String httpContentCompressor = "httpContentCompressor";
-
-    private String chunkedWriteHandler = "chunkedWriteHandler";
-
-    private String nettyServerHandler = "nettyServerHandler";
-
-    private Integer maxContentLength = 65536;
 
     public void start() {
         final NioEventLoopGroup bossGroup = new NioEventLoopGroup();
@@ -78,15 +65,16 @@ public class NettyServer {
                         @Override
                         protected void initChannel(SocketChannel ch) {
                             final ChannelPipeline pipeline = ch.pipeline();
-                            pipeline.addLast(httpServerCodec, new HttpServerCodec());
-                            pipeline.addLast(httpObjectAggregator, new HttpObjectAggregator(maxContentLength));
-                            pipeline.addLast(httpContentCompressor, new HttpContentCompressor());
-                            pipeline.addLast(chunkedWriteHandler, new ChunkedWriteHandler());
-                            pipeline.addLast(nettyServerHandler, new NettyServerHandler(httpRouter));
+                            pipeline.addLast("httpServerCodec", new HttpServerCodec());
+                            pipeline.addLast("httpObjectAggregator", new HttpObjectAggregator(65536));
+                            pipeline.addLast("httpContentCompressor", new HttpContentCompressor());
+                            pipeline.addLast("chunkedWriteHandler", new ChunkedWriteHandler());
+                            pipeline.addLast("nettyServerHandler", new NettyServerHandler(httpRouter));
                         }
                     });
+
             final Channel serverChannel = bootstrap.bind(new InetSocketAddress(port)).sync().channel();
-            log.info("Netty started on port(s):" + port);
+            log.info("Netty started on port(s):"+port);
             serverChannel.closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -96,3 +84,4 @@ public class NettyServer {
         }
     }
 }
+

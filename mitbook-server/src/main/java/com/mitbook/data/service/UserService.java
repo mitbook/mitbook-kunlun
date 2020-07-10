@@ -13,24 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mitbook.annotation;
+package com.mitbook.data.service;
 
-import com.mitbook.common.Constant;
+import com.mitbook.data.entity.UserEntity;
 
-import java.lang.annotation.*;
+import java.util.List;
 
 /**
  * @author pengzhengfa
  */
-@Target(value = ElementType.PARAMETER)
-@Retention(value = RetentionPolicy.RUNTIME)
-@Inherited
-@Documented
-public @interface RequestParam {
+public interface UserService {
 
-    String name();
+    List<UserEntity> selectAllUser();
 
-    boolean required() default true;
+    List<UserEntity> selectAllIdUser(Integer id);
 
-    String defaultValue() default Constant.EMPTY;
+    int insertUserData(UserEntity userEntity);
+
+    int updateUserData(UserEntity userEntity);
+
+    int  deleteUserById(UserEntity userEntity);
 }

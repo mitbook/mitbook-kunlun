@@ -13,24 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mitbook.annotation;
+package com.mitbook.common;
 
-import com.mitbook.common.Constant;
-
-import java.lang.annotation.*;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author pengzhengfa
  */
-@Target(value = ElementType.PARAMETER)
-@Retention(value = RetentionPolicy.RUNTIME)
-@Inherited
-@Documented
-public @interface RequestParam {
+public class Constant {
 
-    String name();
+    public static final String EMPTY = StringUtils.EMPTY;
 
-    boolean required() default true;
+    public static final String QUESTION = "?";
 
-    String defaultValue() default Constant.EMPTY;
+    public static final String SLASH = "/";
+
+    /**
+     * 图片名称
+     */
+    public static final String FAVICON = "/favicon.ico";
 }

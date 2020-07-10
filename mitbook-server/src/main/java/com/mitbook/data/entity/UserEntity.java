@@ -13,24 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mitbook.annotation;
+package com.mitbook.data.entity;
 
-import com.mitbook.common.Constant;
-
-import java.lang.annotation.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * @author pengzhengfa
  */
-@Target(value = ElementType.PARAMETER)
-@Retention(value = RetentionPolicy.RUNTIME)
-@Inherited
-@Documented
-public @interface RequestParam {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class UserEntity {
 
-    String name();
+    /**
+     * 用户id
+     */
+    private Integer id;
 
-    boolean required() default true;
-
-    String defaultValue() default Constant.EMPTY;
+    /**
+     * 用户姓名
+     */
+    private String name;
 }

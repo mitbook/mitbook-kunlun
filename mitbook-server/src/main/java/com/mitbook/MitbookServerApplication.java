@@ -13,24 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mitbook.annotation;
-
-import com.mitbook.common.Constant;
-
-import java.lang.annotation.*;
-
+package com.mitbook;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author pengzhengfa
  */
-@Target(value = ElementType.PARAMETER)
-@Retention(value = RetentionPolicy.RUNTIME)
-@Inherited
-@Documented
-public @interface RequestParam {
-
-    String name();
-
-    boolean required() default true;
-
-    String defaultValue() default Constant.EMPTY;
+@SpringBootApplication
+public class MitbookServerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MitbookServerApplication.class, args);
+    }
 }

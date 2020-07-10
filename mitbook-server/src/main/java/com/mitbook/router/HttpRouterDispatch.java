@@ -16,8 +16,8 @@
 package com.mitbook.router;
 
 import com.mitbook.annotation.RequestParam;
-import com.mitbook.response.GeneralResponse;
-import com.mitbook.utils.RequestUtil;
+import com.mitbook.common.response.GeneralResponse;
+import com.mitbook.common.utils.RequestUtil;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.HttpMethod;
 import lombok.Data;
@@ -50,7 +50,9 @@ public class HttpRouterDispatch<T> {
     @NonNull
     private Method method;
 
-    public static void verifyParameterAnnotations(Map<String, List<String>> parameterMap, Method method) {
+    // private boolean injectionFullHttpRequest;
+
+    private static void verifyParameterAnnotations(Map<String, List<String>> parameterMap, Method method) {
         Annotation[][] parameterAnnotations = method.getParameterAnnotations();
         if (parameterAnnotations == null || parameterAnnotations.length == 0) {
             return;
@@ -76,7 +78,7 @@ public class HttpRouterDispatch<T> {
         }
     }
 
-    public static void handleParameterTypes(Class<?> parameterType, List<String> values, List<Object> args) {
+    private static void handleParameterTypes(Class<?> parameterType, List<String> values, List<Object> args) {
         if (CollectionUtils.isEmpty(values)) {
             args.add(null);
             return;
@@ -158,7 +160,7 @@ public class HttpRouterDispatch<T> {
         }
     }
 
-    public Object[] handleRequest(FullHttpRequest request) {
+    private Object[] handleRequest(FullHttpRequest request) {
         HttpMethod method = request.method();
         if (method == HttpMethod.GET) {
             return handleGetRequest(request);
@@ -172,7 +174,7 @@ public class HttpRouterDispatch<T> {
         throw new RuntimeException(String.format("Unsupported '%s' request methods.", method));
     }
 
-    public Object[] handleGetRequest(FullHttpRequest request) {
+    private Object[] handleGetRequest(FullHttpRequest request) {
         Parameter[] parameters = method.getParameters();
         Class<?>[] parameterTypes = method.getParameterTypes();
         List<Object> args = new ArrayList<>(parameters.length);
@@ -185,17 +187,17 @@ public class HttpRouterDispatch<T> {
         return args.toArray();
     }
 
-    public Object[] handlePostRequest(FullHttpRequest request) {
+    private Object[] handlePostRequest(FullHttpRequest request) {
         Class<?>[] parameterTypes = method.getParameterTypes();
         List<Object> args = Collections.singletonList(RequestUtil.postEntity(request, parameterTypes[0]));
         return args.toArray();
     }
 
-    public Object[] handlePutRequest(FullHttpRequest request) {
+    private Object[] handlePutRequest(FullHttpRequest request) {
         return handlePostRequest(request);
     }
 
-    public Object[] handleDeleteRequest(FullHttpRequest request) {
+    private Object[] handleDeleteRequest(FullHttpRequest request) {
         return handleGetRequest(request);
     }
 }
