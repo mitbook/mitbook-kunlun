@@ -15,9 +15,9 @@
  */
 package com.mitbook.rest;
 
-import com.mitbook.annotation.MitRequestMapping;
-import com.mitbook.annotation.MitRequestParam;
-import com.mitbook.annotation.MitRestController;
+import com.mitbook.annotation.RequestMapping;
+import com.mitbook.annotation.RequestParam;
+import com.mitbook.annotation.RestController;
 import com.mitbook.entity.UserEntity;
 import com.mitbook.response.GeneralResponse;
 import com.mitbook.service.UserService;
@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * @author pengzhengfa
  */
-@MitRestController
+@RestController
 public class RestUser {
 
 
@@ -42,7 +42,7 @@ public class RestUser {
      *
      * @return
      */
-    @MitRequestMapping(uri = "findAllUser")
+    @RequestMapping(uri = "findAllUser")
     public GeneralResponse findAllUser() {
         List<UserEntity> userList = userService.selectAllUser();
         return GeneralResponse.success(userList);
@@ -54,8 +54,8 @@ public class RestUser {
      * @param id
      * @return
      */
-    @MitRequestMapping(uri = "findUserById")
-    public GeneralResponse findAllIdUser(@MitRequestParam(name = "id") Integer id) {
+    @RequestMapping(uri = "findUserById")
+    public GeneralResponse findAllIdUser(@RequestParam(name = "id") Integer id) {
         List<UserEntity> userList = userService.selectAllIdUser(id);
         return GeneralResponse.success(userList);
     }
@@ -67,7 +67,7 @@ public class RestUser {
      * @param userEntity
      * @return
      */
-    @MitRequestMapping(uri = "insertUserData", method = RequestMethod.POST)
+    @RequestMapping(uri = "insertUserData", method = RequestMethod.POST)
     public GeneralResponse insertUserData(@RequestBody UserEntity userEntity) {
         int insertUserData = userService.insertUserData(userEntity);
         return GeneralResponse.success(insertUserData);
@@ -80,7 +80,7 @@ public class RestUser {
      * @param userEntity
      * @return
      */
-    @MitRequestMapping(uri = "updateUserById", method = RequestMethod.POST)
+    @RequestMapping(uri = "updateUserById", method = RequestMethod.POST)
     public GeneralResponse updateUserById(@RequestBody UserEntity userEntity) {
         int updateUserData = userService.updateUserData(userEntity);
         return GeneralResponse.success(updateUserData);
@@ -92,7 +92,7 @@ public class RestUser {
      * @param userEntity
      * @return
      */
-    @MitRequestMapping(uri = "deleteUserById", method = RequestMethod.POST)
+    @RequestMapping(uri = "deleteUserById", method = RequestMethod.POST)
     public GeneralResponse deleteUserById(@RequestBody UserEntity userEntity) {
         int deleteUserById = userService.deleteUserById(userEntity);
         return GeneralResponse.success(deleteUserById);
