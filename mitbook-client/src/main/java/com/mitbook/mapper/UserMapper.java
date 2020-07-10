@@ -23,8 +23,6 @@ import java.util.List;
 /**
  * @author pengzhengfa
  */
-
-@Mapper
 public interface UserMapper {
 
     @Select("select id,name from user")

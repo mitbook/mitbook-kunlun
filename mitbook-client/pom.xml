@@ -22,7 +22,12 @@
     <dependencies>
         <dependency>
             <groupId>com.mitbook</groupId>
-            <artifactId>mitbook-kunlun</artifactId>
+            <artifactId>mitbook-server</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mitbook</groupId>
+            <artifactId>mitbook-common</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
@@ -50,6 +55,7 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--整合spring cloud alibaba-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
